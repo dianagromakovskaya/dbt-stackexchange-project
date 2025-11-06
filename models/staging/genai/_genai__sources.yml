@@ -1,0 +1,13 @@
+sources:
+  - name: genai
+    database: dbt-stackexchange-projet
+    schema: raw_data
+    tables:
+      - name: users
+        identifier: genai_users
+      - name: questions
+        identifier: genai_questions
+      - name: answers
+        identifier: genai_answers
+      - name: posts_history
+        identifier: genai_posts_history
