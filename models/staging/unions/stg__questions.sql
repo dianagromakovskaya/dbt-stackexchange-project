@@ -1,5 +1,3 @@
-{{ config(materialized='view') }}
-
 {{ dbt_utils.union_relations(
     relations=[
         ref('stg_ai__questions'), 
