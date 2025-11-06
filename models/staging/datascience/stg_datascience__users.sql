@@ -20,7 +20,8 @@ transformed as (
     link as user_link,
     display_name as user_display_name,
     location as user_location,
-    snapshot_date
+    snapshot_date,
+    'datascience' as user_site
 
 
   from source

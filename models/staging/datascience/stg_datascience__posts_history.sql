@@ -25,8 +25,8 @@ transformed as (
     DATETIME(closed_date) as post_closed_date,
     view_count post_view_count,
     score post_score,
-    cast('2024-04-01' as date) as snapshot_date
-
+    cast('2024-04-01' as date) as snapshot_date,
+    'datascience' as post_site
 
   from source
 

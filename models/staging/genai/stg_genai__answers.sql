@@ -18,7 +18,8 @@ transformed as (
     DATETIME(TIMESTAMP_SECONDS(creation_date)) as answer_created_date,
     DATETIME(TIMESTAMP_SECONDS(CAST(last_edit_date AS INT64))) as answer_last_edit_date,
     score answer_score,
-    snapshot_date
+    snapshot_date,
+    'genai' as answer_site
 
 
   from source

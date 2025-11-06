@@ -28,8 +28,8 @@ transformed as (
     view_count question_view_count,
     score question_score,
     accepted_answer_id as question_accepted_answer_id,
-    snapshot_date
-
+    snapshot_date,
+    'ai' as question_site
 
   from source
 
