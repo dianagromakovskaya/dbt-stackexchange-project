@@ -1,6 +1,6 @@
 sources:
   - name: ai
-    database: dbt-stackexchange-project
+    database: dbt-stackexchange-projet
     schema: raw_data
     tables:
       - name: users
@@ -9,7 +9,5 @@ sources:
         identifier: ai_questions
       - name: answers
         identifier: ai_answers
-      - name: users_history
-        identifier: ai_users_history
       - name: posts_history
         identifier: ai_posts_history

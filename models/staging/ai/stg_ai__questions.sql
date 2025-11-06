@@ -19,12 +19,15 @@ transformed as (
         ) as tag
     ) as question_tags_array,
     link as question_link,
-    title as question_title,
-    body as question_body,
-    cast(creation_date as DATETIME) as question_created_date,
-    cast(last_edit_date AS DATETIME) as question_last_edit_date,
+    {{ html_unescape('title') }} as question_title,
+    {{ strip_html('body') }} as question_body,
+    DATETIME(TIMESTAMP_SECONDS(creation_date)) as question_created_date,
+    DATETIME(TIMESTAMP_SECONDS(CAST(last_edit_date AS INT64))) as question_last_edit_date,
+    DATETIME(TIMESTAMP_SECONDS(CAST(closed_date AS INT64))) as question_closed_date,
+    closed_reason as question_closed_reason,
     view_count question_view_count,
     score question_score,
+    accepted_answer_id as question_accepted_answer_id,
     snapshot_date
 
 
