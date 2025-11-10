@@ -25,5 +25,6 @@ transformed as (
   from u
 
 )
-select *
+select *,
+coalesce(answer_last_edit_date, answer_created_date) answer_updated_at
 from transformed

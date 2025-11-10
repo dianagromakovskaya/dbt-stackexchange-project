@@ -9,6 +9,7 @@ with ranked as (
     answer_last_edit_date,
     snapshot_date,
     answer_site,
+    answer_updated_at,
     row_number() over (partition by answer_id, answer_site order by snapshot_date desc) rn
 from {{ ref('stg_answers_base') }}
 )
@@ -21,6 +22,7 @@ select
     answer_created_date,
     answer_last_edit_date,
     snapshot_date,
-    answer_site
+    answer_site,
+    answer_updated_at
 from ranked
 where rn = 1

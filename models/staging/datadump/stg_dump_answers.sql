@@ -6,6 +6,7 @@ select
     post_created_date as answer_created_date,
     post_last_edit_date as answer_last_edit_date,
     snapshot_date,
-    post_site as answer_site
+    post_site as answer_site,
+    coalesce(post_last_edit_date, post_created_date) as answer_updated_at
 from {{ ref('stg_posts_history_base') }}
 where post_type = 'Answer'

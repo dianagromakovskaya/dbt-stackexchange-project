@@ -27,11 +27,12 @@ transformed as (
     closed_reason as question_closed_reason,
     view_count question_view_count,
     score question_score,
-    accepted_answer_id as question_accepted_answer_id,
+    cast(accepted_answer_id as int64) as question_accepted_answer_id,
     snapshot_date,
     site as question_site
 
   from u
 )
-select *
+select *,
+    coalesce(question_last_edit_date, question_created_date) as question_updated_at
 from transformed

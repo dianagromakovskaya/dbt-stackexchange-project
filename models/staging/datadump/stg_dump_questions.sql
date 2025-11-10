@@ -9,6 +9,7 @@ select
     post_closed_date as question_closed_date,
     post_accepted_answer_id as question_accepted_answer_id,
     snapshot_date,
-    post_site as question_site
+    post_site as question_site,
+    coalesce(post_last_edit_date, post_created_date) as question_updated_at 
 from {{ ref('stg_posts_history_base') }}
 where post_type = 'Question'

@@ -15,6 +15,7 @@ transformed as (
 
     account_id as user_account_id,
     user_id,
+    DATETIME(TIMESTAMP_SECONDS(CAST(last_modified_date AS INT64))) as user_last_modified_date,
     DATETIME(TIMESTAMP_SECONDS(last_access_date)) as user_last_access_date,
     reputation as user_reputation,
     DATETIME(TIMESTAMP_SECONDS(creation_date)) as user_created_date,
@@ -24,10 +25,11 @@ transformed as (
     display_name as user_display_name,
     location as user_location,
     snapshot_date,
-    site as user_site
+    site as user_site,
 
   from u
 
 )
 
-select * from transformed
+select *
+from transformed
