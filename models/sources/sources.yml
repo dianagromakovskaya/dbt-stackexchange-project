@@ -1,0 +1,37 @@
+sources:
+  - name: ai
+    database: dbt-stackexchange-projet
+    schema: raw_data
+    tables:
+      - name: users
+        identifier: ai_users
+      - name: questions
+        identifier: ai_questions
+      - name: answers
+        identifier: ai_answers
+      - name: posts_history
+        identifier: ai_posts_history
+  - name: datascience
+    database: dbt-stackexchange-projet
+    schema: raw_data
+    tables:
+      - name: users
+        identifier: datascience_users
+      - name: questions
+        identifier: datascience_questions
+      - name: answers
+        identifier: datascience_answers
+      - name: posts_history
+        identifier: datascience_posts_history
+  - name: genai
+    database: dbt-stackexchange-projet
+    schema: raw_data
+    tables:
+      - name: users
+        identifier: genai_users
+      - name: questions
+        identifier: genai_questions
+      - name: answers
+        identifier: genai_answers
+      - name: posts_history
+        identifier: genai_posts_history

@@ -1,15 +1,15 @@
-with 
-
-source as (
-
-  select * from {{ source('genai', 'questions') }}
-
+with u as (
+  {{ dbt_utils.union_relations(
+      relations=[
+        source('ai','questions'),
+        source('datascience','questions'),
+        source('genai','questions')
+      ],
+      source_column_name=none
+  ) }}
 ),
-
 transformed as (
-
   select 
-
     question_id,
     cast(JSON_VALUE(owner, '$.user_id') as int64) as question_owner_user_id,
     (
@@ -29,11 +29,9 @@ transformed as (
     score question_score,
     accepted_answer_id as question_accepted_answer_id,
     snapshot_date,
-    'genai' as question_site
+    site as question_site
 
-
-  from source
-
+  from u
 )
-
-select * from transformed
+select *
+from transformed

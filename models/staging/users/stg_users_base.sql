@@ -1,9 +1,12 @@
-with 
-
-source as (
-
-  select * from {{ source('datascience', 'users') }}
-
+with u as (
+  {{ dbt_utils.union_relations(
+      relations=[
+        source('ai','users'),
+        source('datascience','users'),
+        source('genai','users')
+      ],
+      source_column_name=none
+  ) }}
 ),
 
 transformed as (
@@ -21,8 +24,7 @@ transformed as (
     display_name as user_display_name,
     location as user_location,
     snapshot_date,
-    'datascience' as user_site
-
+    site as user_site
 
   from source
 

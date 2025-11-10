@@ -1,9 +1,12 @@
-with 
-
-source as (
-
-  select * from {{ source('ai', 'posts_history') }}
-
+with u as (
+  {{ dbt_utils.union_relations(
+      relations=[
+        source('ai','posts_history'),
+        source('datascience','posts_history'),
+        source('genai','posts_history')
+      ],
+      source_column_name=none
+  ) }}
 ),
 
 transformed as (
@@ -14,6 +17,7 @@ transformed as (
      {{ get_post_type_description('post_type_id') }} post_type,
     accepted_answer_id post_accepted_answer_id,
     owner_user_id as post_owner_user_id,
+    parent_id post_answer_question_id,
     SPLIT(
         REGEXP_REPLACE(tags, r'^\||\|$', ''),
         '|'
@@ -26,9 +30,10 @@ transformed as (
     view_count post_view_count,
     score post_score,
     cast('2024-04-01' as date) as snapshot_date,
-    'ai' as post_site
+    site as post_site
 
-  from source
+
+  from u
 
 )
 
