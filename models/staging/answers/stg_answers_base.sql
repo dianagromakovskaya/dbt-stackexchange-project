@@ -7,7 +7,7 @@ with u as (
       ],
       source_column_name=none
   ) }}
-)
+),
 transformed as (
 
   select 

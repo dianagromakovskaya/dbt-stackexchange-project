@@ -22,6 +22,11 @@ transformed as (
         REGEXP_REPLACE(tags, r'^\||\|$', ''),
         '|'
     ) AS post_tags_array,
+    case 
+        when post_type_id = 1
+            then concat('https://', site, '.stackexchange.com/questions/', id)
+        else null 
+    end post_question_link,
     {{ html_unescape('title') }} as post_title,
     {{ strip_html('body') }} as post_body,
     DATETIME(creation_date) as post_created_date,

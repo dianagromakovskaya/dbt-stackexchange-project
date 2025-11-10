@@ -1,7 +1,7 @@
 with ranked as (
     select 
     answer_id,
-    question_id,
+    answer_question_id,
     answer_owner_user_id,
     is_accepted,
     answer_body,
@@ -23,4 +23,4 @@ select
     snapshot_date,
     answer_site
 from ranked
-where rn = 1;
+where rn = 1

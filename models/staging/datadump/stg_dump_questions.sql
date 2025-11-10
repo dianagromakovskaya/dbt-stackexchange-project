@@ -1,8 +1,7 @@
 select 
     post_id as question_id,
     post_owner_user_id as question_owner_user_id,
-    post_tags_array as question_tags_array,
-    post_ as question_link,
+    post_question_link as question_link,
     post_title as question_title,
     post_body as question_body,
     post_created_date as question_created_date,

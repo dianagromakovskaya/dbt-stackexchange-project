@@ -26,7 +26,7 @@ transformed as (
     snapshot_date,
     site as user_site
 
-  from source
+  from u
 
 )
 

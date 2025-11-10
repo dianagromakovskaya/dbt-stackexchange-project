@@ -8,4 +8,4 @@ select
     snapshot_date,
     post_site as answer_site
 from {{ ref('stg_posts_history_base') }}
-where post_type = 'Answer';
+where post_type = 'Answer'
