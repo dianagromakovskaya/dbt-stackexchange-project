@@ -34,4 +34,4 @@ models:
       +materialized: view
 
     intermediate:
-      +materialized: incremental
+      +materialized: table
