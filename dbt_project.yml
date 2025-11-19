@@ -16,6 +16,16 @@ clean-targets:         # directories to be removed by `dbt clean`
   - "target"
   - "dbt_packages"
 
+sources:
+  dbt_stackexchange_project:
+    +freshness:
+      warn_after:
+        count: 2
+        period: day
+      error_after:
+        count: 3
+        period: day
+
 models:
   dbt_stackexchange_project:
     +materialized: table

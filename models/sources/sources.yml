@@ -2,6 +2,8 @@ sources:
   - name: ai
     database: dbt-stackexchange-projet
     schema: raw_data
+    loaded_at_field: "CAST(snapshot_date AS TIMESTAMP)"
+
     tables:
       - name: users
         identifier: ai_users
@@ -11,9 +13,13 @@ sources:
         identifier: ai_answers
       - name: posts_history
         identifier: ai_posts_history
+        freshness: null
+
   - name: datascience
     database: dbt-stackexchange-projet
     schema: raw_data
+    loaded_at_field: "CAST(snapshot_date AS TIMESTAMP)"
+
     tables:
       - name: users
         identifier: datascience_users
@@ -23,9 +29,12 @@ sources:
         identifier: datascience_answers
       - name: posts_history
         identifier: datascience_posts_history
+        freshness: null
+
   - name: genai
     database: dbt-stackexchange-projet
     schema: raw_data
+    loaded_at_field: "CAST(snapshot_date AS TIMESTAMP)"
     tables:
       - name: users
         identifier: genai_users
@@ -35,3 +44,4 @@ sources:
         identifier: genai_answers
       - name: posts_history
         identifier: genai_posts_history
+        freshness: null
